@@ -17,13 +17,23 @@ MIRROR_2_HOST="magicmirror@10.10.10.85"
 REMOTE_MM="~/MagicMirror"
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
-# Resolve symlinks so scp always copies real files, not symlink metadata
+# Resolve symlinks so rsync always copies real files, not symlink metadata.
+# Excludes token/credential files so live Pi tokens are never overwritten.
 scp_module() {
   local src
   src="$(realpath "$REPO/modules/$1")"
   local host="$2"
   echo "  $1"
-  scp -qr "$src" "$host:$REMOTE_MM/modules/"
+  rsync -a --delete \
+    --exclude="token.json" \
+    --exclude="credentials.json" \
+    --exclude="jokes.json" \
+    --exclude="jokes-state.json" \
+    --exclude="solar_log.json" \
+    --exclude="kwh-history.json" \
+    --exclude="kwh-baseline.json" \
+    --exclude="kwh-today.json" \
+    -e ssh "$src" "$host:$REMOTE_MM/modules/"
 }
 
 scp_file() { scp -q "$1" "$2"; }

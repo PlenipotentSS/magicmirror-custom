@@ -98,7 +98,7 @@ Module.register("MMM-RivianCar", {
       if (d.remainingRange !== null) {
         const range = document.createElement("div");
         range.className = "rivian-range";
-        range.innerText = Math.round(d.remainingRange) + " mi range";
+        range.innerText = Math.round(d.remainingRange * 0.621371) + " mi range";
         wrapper.appendChild(range);
       }
     }

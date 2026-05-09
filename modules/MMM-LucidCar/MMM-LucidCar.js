@@ -92,7 +92,7 @@ Module.register("MMM-LucidCar", {
       if (d.remainingRange !== null) {
         const range = document.createElement("div");
         range.className = "lucid-range";
-        range.innerText = Math.round(d.remainingRange) + " mi range";
+        range.innerText = Math.round(d.remainingRange * 0.621371) + " mi range";
         wrapper.appendChild(range);
       }
     }
