@@ -1,0 +1,9 @@
+{
+  "name": "MMM-Synology",
+  "version": "1.0.0",
+  "description": "MagicMirror² module for Synology DiskStation NAS health via DSM REST API",
+  "main": "MMM-Synology.js",
+  "dependencies": {
+    "node-fetch": "^2.7.0"
+  }
+}

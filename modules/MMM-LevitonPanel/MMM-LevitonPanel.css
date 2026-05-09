@@ -1,0 +1,131 @@
+/* ── Design tokens ── */
+.MMM-LevitonPanel {
+  --mario-red:    #E52521;
+  --mario-yellow: #FBD000;
+  --mario-green:  #43B047;
+  --mario-white:  #FFFFFF;
+  --panel-bg:     rgba(255, 255, 255, 0.05);
+  --panel-border: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+/* ── Card shell ── */
+.MMM-LevitonPanel.panel-card {
+  min-width: 220px;
+  color: var(--mario-white);
+  font-family: inherit;
+}
+
+/* ── Icon + data row ── */
+.MMM-LevitonPanel .panel-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+/* ── SVG panel icon ── */
+.MMM-LevitonPanel .panel-icon-wrap {
+  flex-shrink: 0;
+  opacity: 0.85;
+}
+
+.MMM-LevitonPanel .panel-icon .pi-body {
+  fill: rgba(255, 255, 255, 0.06);
+  stroke: rgba(255, 255, 255, 0.20);
+  stroke-width: 1.5;
+}
+
+.MMM-LevitonPanel .panel-icon .pi-main-bar {
+  fill: rgba(255, 255, 255, 0.10);
+}
+
+.MMM-LevitonPanel .panel-icon .pi-main-breaker {
+  fill: rgba(255, 255, 255, 0.25);
+}
+
+.MMM-LevitonPanel .panel-icon .pi-breaker {
+  fill: rgba(255, 255, 255, 0.10);
+}
+
+.MMM-LevitonPanel .panel-icon .pi-breaker-on {
+  fill: rgba(251, 208, 0, 0.45);
+}
+
+.MMM-LevitonPanel .panel-icon .pi-breaker-tripped {
+  fill: var(--mario-red);
+  filter: drop-shadow(0 0 3px var(--mario-red));
+}
+
+/* ── Data column ── */
+.MMM-LevitonPanel .panel-data-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.MMM-LevitonPanel .panel-watts {
+  font-size: 38px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -1px;
+  color: var(--mario-white);
+}
+
+.MMM-LevitonPanel .panel-watts.watts-green  { color: var(--mario-green); }
+.MMM-LevitonPanel .panel-watts.watts-yellow { color: var(--mario-yellow); }
+.MMM-LevitonPanel .panel-watts.watts-red    { color: var(--mario-red); }
+
+.MMM-LevitonPanel .panel-top-consumer {
+  font-size: 11px;
+  color: var(--mario-yellow);
+  opacity: 0.85;
+  line-height: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 160px;
+}
+
+.MMM-LevitonPanel .panel-kwh {
+  font-size: 12px;
+  opacity: 0.55;
+  line-height: 1;
+}
+
+/* ── Tripped indicators ── */
+.MMM-LevitonPanel .panel-trip-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 6px;
+}
+
+.MMM-LevitonPanel .panel-trip-box {
+  display: inline-block;
+  background: rgba(229, 37, 33, 0.18);
+  border: 1px solid var(--mario-red);
+  border-radius: 4px;
+  color: var(--mario-red);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 7px;
+  letter-spacing: 0.03em;
+  box-shadow: 0 0 8px rgba(229, 37, 33, 0.5);
+  animation: trip-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes trip-pulse {
+  0%, 100% { box-shadow: 0 0 6px rgba(229, 37, 33, 0.4); }
+  50%       { box-shadow: 0 0 14px rgba(229, 37, 33, 0.85); }
+}
+
+/* ── Status states ── */
+.MMM-LevitonPanel .panel-status {
+  font-size: 11px;
+  padding: 4px 0;
+}
+
+.MMM-LevitonPanel .panel-loading { opacity: 0.45; }
+.MMM-LevitonPanel .panel-error   { color: var(--mario-red); }

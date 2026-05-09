@@ -1,0 +1,10 @@
+{
+  "name": "MMM-UnifiNetwork",
+  "version": "1.0.0",
+  "description": "MagicMirror² module for UniFi Network WAN status, client counts, and device health",
+  "main": "MMM-UnifiNetwork.js",
+  "type": "commonjs",
+  "dependencies": {
+    "node-fetch": "^2.7.0"
+  }
+}

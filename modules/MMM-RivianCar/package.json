@@ -1,0 +1,10 @@
+{
+  "name": "mmm-riviancar",
+  "version": "1.0.0",
+  "description": "MagicMirror² module for Rivian vehicle status",
+  "main": "MMM-RivianCar.js",
+  "dependencies": {
+    "node-fetch": "^2.7.0",
+    "uuid": "^9.0.0"
+  }
+}

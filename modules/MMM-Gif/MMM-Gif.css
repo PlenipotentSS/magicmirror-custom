@@ -1,0 +1,30 @@
+.MMM-Gif {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 0;
+  pointer-events: none;
+  overflow: visible;
+  z-index: 9999;
+}
+
+.MMM-Gif-img {
+  position: fixed;
+  bottom: 0;
+  right: -200px;
+  opacity: 0;
+}
+
+@keyframes MMM-Gif-travel {
+  0%   { right: -200px; opacity: 1; }
+  5%   { opacity: 1; }
+  95%  { opacity: 1; }
+  100% { right: 110vw;  opacity: 0; }
+}
+
+.MMM-Gif-img.MMM-Gif-run {
+  animation-name: MMM-Gif-travel;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}

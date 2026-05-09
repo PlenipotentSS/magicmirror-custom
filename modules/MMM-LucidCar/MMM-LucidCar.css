@@ -1,0 +1,114 @@
+.MMM-LucidCar {
+  font-family: inherit;
+  text-align: center;
+  padding: 0 8px 4px;
+  min-width: 220px;
+}
+
+/* ── Car image ──────────────────────────────────────────────────────────── */
+.lucid-image-wrap {
+  margin-bottom: 8px;
+}
+
+.lucid-car-img {
+  width: 220px;
+  height: auto;
+  opacity: 0.92;
+  display: block;
+  margin: 0 auto;
+}
+
+/* ── Battery ────────────────────────────────────────────────────────────── */
+.lucid-battery-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 3px;
+}
+
+.lucid-battery-outer {
+  position: relative;
+  width: 100px;
+  height: 13px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.08);
+  overflow: visible;
+}
+
+.lucid-battery-tip {
+  position: absolute;
+  right: -6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 0 2px 2px 0;
+}
+
+.lucid-battery-fill {
+  height: 100%;
+  border-radius: 1px;
+  transition: width 0.6s ease;
+}
+
+.batt-high  { background: linear-gradient(90deg, #38e07a, #52f8a0); }
+.batt-mid   { background: linear-gradient(90deg, #f0c040, #ffd860); }
+.batt-low   { background: linear-gradient(90deg, #f07830, #ff9940); }
+.batt-critical { background: linear-gradient(90deg, #e03030, #ff5050); animation: batt-pulse 1.4s ease-in-out infinite; }
+
+@keyframes batt-pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.55; }
+}
+
+.lucid-battery-pct {
+  font-size: 0.8em;
+  font-weight: 600;
+  min-width: 32px;
+  text-align: right;
+}
+
+/* ── Range ──────────────────────────────────────────────────────────────── */
+.lucid-range {
+  margin-bottom: 6px;
+  letter-spacing: 0.03em;
+  font-size: 0.8em;
+  color: #ffffff;
+}
+
+/* ── Rows (lock, charging, warnings) ────────────────────────────────────── */
+.lucid-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin: 2px 0;
+  font-size: 0.72em;
+}
+
+.lucid-icon {
+  font-size: 1em;
+  line-height: 1;
+}
+
+.lucid-label {
+  line-height: 1.3;
+}
+
+.lucid-ok   { color: #52f8a0; }
+.lucid-warn { color: #ffd860; }
+
+.lucid-error {
+  color: #ff6060;
+  padding: 6px 0;
+}
+
+/* ── Timestamp ──────────────────────────────────────────────────────────── */
+.lucid-updated {
+  margin-top: 6px;
+  opacity: 0.5;
+  font-size: 0.7em;
+}

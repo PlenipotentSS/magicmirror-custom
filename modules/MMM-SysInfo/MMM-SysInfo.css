@@ -1,0 +1,34 @@
+.module.MMM-SysInfo .module-header {
+  text-align: left;
+  width: 100%;
+}
+
+.MMM-SysInfo {
+  text-align: center;
+  width: 100%;
+}
+
+.sysinfo-row {
+  display: block;
+  margin-top: 6px;
+}
+
+.sysinfo-item {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 10px;
+}
+
+.sysinfo-label {
+  color: #aaaaaa;
+  font-size: 0.75em;
+  text-transform: uppercase;
+}
+
+.sysinfo-value {
+  color: #ffffff;
+  font-size: 1.6em;
+  font-weight: bold;
+  order: -1;
+}

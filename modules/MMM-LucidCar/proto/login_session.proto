@@ -1,0 +1,79 @@
+syntax = "proto3";
+
+package mobilegateway.protos;
+
+import "vehicle_state_service.proto";
+
+enum NotificationChannelType {
+  NOTIFICATION_CHANNEL_UNKNOWN = 0;
+  NOTIFICATION_CHANNEL_FIREBASE = 1;
+  NOTIFICATION_CHANNEL_BAIDU = 2;
+}
+
+enum Os {
+  OS_UNKNOWN = 0;
+  OS_IOS = 1;
+  OS_ANDROID = 2;
+}
+
+message LoginRequest {
+  string username = 1;
+  string password = 2;
+  NotificationChannelType notification_channel_type = 3;
+  Os os = 4;
+  string notification_device_token = 5;
+  string locale = 6;
+  optional string device_id = 7;
+  optional string client_name = 8;
+}
+
+message SessionInfo {
+  string id_token = 1;
+  int32 expiry_time_sec = 2;
+  optional string refresh_token = 3;
+  string gigya_jwt = 4;
+}
+
+message Profile {
+  string email = 1;
+  string locale = 2;
+  string username = 3;
+  string photo_url = 4;
+  string first_name = 5;
+  string last_name = 6;
+  string ema_id = 7;
+}
+
+message LoginResponse {
+  string uid = 1;
+  SessionInfo session_info = 2;
+  Profile user_profile = 3;
+  repeated Vehicle user_vehicle_data = 4;
+}
+
+message GetNewJWTTokenRequest {
+  string refresh_token = 1;
+}
+
+message GetNewJWTTokenResponse {
+  SessionInfo session_info = 1;
+}
+
+message GetUserVehiclesRequest {}
+
+message GetUserVehiclesResponse {
+  repeated Vehicle user_vehicle_data = 1;
+}
+
+message LogoutRequest {
+  string notification_device_token = 1;
+}
+
+message LogoutResponse {}
+
+service LoginSession {
+  rpc Login(LoginRequest) returns (LoginResponse) {}
+  rpc GetNewJWTToken(GetNewJWTTokenRequest) returns (GetNewJWTTokenResponse) {}
+  rpc GetUserVehicles(GetUserVehiclesRequest) returns (GetUserVehiclesResponse) {}
+  rpc Logout(LogoutRequest) returns (LogoutResponse) {}
+}

@@ -1,0 +1,9 @@
+{
+  "name": "MMM-FlumeWater",
+  "version": "1.0.0",
+  "description": "MagicMirror module for Flume water sensor",
+  "main": "MMM-FlumeWater.js",
+  "dependencies": {
+    "node-fetch": "^2.7.0"
+  }
+}

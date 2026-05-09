@@ -1,0 +1,9 @@
+{
+  "name": "MMM-TeslaEnergy",
+  "version": "1.0.0",
+  "description": "MagicMirror² module for Tesla solar and Powerwall live data via Fleet API",
+  "main": "MMM-TeslaEnergy.js",
+  "dependencies": {
+    "node-fetch": "^2.7.0"
+  }
+}

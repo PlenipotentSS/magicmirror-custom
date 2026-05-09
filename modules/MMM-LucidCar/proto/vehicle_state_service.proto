@@ -1,0 +1,573 @@
+syntax = "proto3";
+
+package mobilegateway.protos;
+
+import "google/protobuf/timestamp.proto";
+
+enum AccessLevel {
+  ACCESS_LEVEL_UNKNOWN = 0;
+  ACCESS_LEVEL_PREDELIVERY_OWNER = 1;
+  ACCESS_LEVEL_PRIMARY_OWNER = 2;
+  ACCESS_LEVEL_SECONDARY_OWNER = 3;
+  ACCESS_LEVEL_DELIVERY_TEAM = 4;
+  ACCESS_LEVEL_SERVICE_TEAM = 5;
+  ACCESS_LEVEL_CUSTOMER_SUPPORT_TEAM = 6;
+  ACCESS_LEVEL_READ_ONLY = 7;
+}
+
+enum Model {
+  MODEL_UNKNOWN = 0;
+  MODEL_AIR = 1;
+  MODEL_GRAVITY = 2;
+}
+
+enum ModelVariant {
+  MODEL_VARIANT_UNKNOWN = 0;
+  MODEL_VARIANT_DREAM_EDITION = 1;
+  MODEL_VARIANT_GRAND_TOURING = 2;
+  MODEL_VARIANT_TOURING = 3;
+  MODEL_VARIANT_PURE = 4;
+  MODEL_VARIANT_SAPPHIRE = 5;
+  MODEL_VARIANT_HYPER = 6;
+  MODEL_VARIANT_EXECUTIVE = 7;
+}
+
+enum PaintColor {
+  PAINT_COLOR_UNKNOWN = 0;
+  PAINT_COLOR_EUREKA_GOLD = 1;
+  PAINT_COLOR_STELLAR_WHITE = 2;
+  PAINT_COLOR_INFINITE_BLACK = 3;
+  PAINT_COLOR_COSMOS_SILVER = 4;
+  PAINT_COLOR_QUANTUM_GREY = 5;
+  PAINT_COLOR_ZENITH_RED = 6;
+  PAINT_COLOR_FATHOM_BLUE = 7;
+  PAINT_COLOR_CUSTOM = 8;
+  PAINT_COLOR_SAPPHIRE_BLUE = 9;
+  PAINT_COLOR_LUNAR_TITANIUM = 10;
+  PAINT_COLOR_AURORA_GREEN = 11;
+  PAINT_COLOR_SUPERNOVA_BRONZE = 12;
+  PAINT_COLOR_GLOSS_BLACK_PRIMARY = 13;
+}
+
+enum Look {
+  LOOK_UNKNOWN = 0;
+  LOOK_PLATINUM = 1;
+  LOOK_STEALTH = 2;
+  LOOK_SAPPHIRE = 3;
+  LOOK_SURFRIDER = 4;
+  LOOK_BASE = 5;
+}
+
+enum Wheels {
+  WHEELS_UNKNOWN = 0;
+  WHEELS_DREAM = 1;
+  WHEELS_BLADE = 2;
+  WHEELS_LITE = 3;
+  WHEELS_RANGE = 4;
+  WHEELS_SPORT = 5;
+  WHEELS_SPORT_STEALTH = 6;
+  WHEELS_BLADE_GRAPHITE = 7;
+  WHEELS_LITE_STEALTH = 8;
+  WHEELS_SPORT_LUSTER = 9;
+  WHEELS_SAPPHIRE_PACKAGE = 10;
+  WHEELS_RANGE_STEALTH = 11;
+  WHEELS_DREAM_MAGNESIUM = 12;
+  WHEELS_AETHER = 13;
+  WHEELS_ORION = 14;
+  WHEELS_VOYAGER = 15;
+}
+
+enum Edition {
+  EDITION_UNKNOWN = 0;
+  EDITION_PERFORMANCE = 1;
+  EDITION_RANGE = 2;
+  EDITION_STANDARD = 3;
+}
+
+enum BatteryType {
+  BATTERY_TYPE_UNKNOWN = 0;
+  BATTERY_TYPE_01 = 1;
+  BATTERY_TYPE_02 = 2;
+  BATTERY_TYPE_03 = 3;
+}
+
+enum Interior {
+  INTERIOR_UNKNOWN = 0;
+  INTERIOR_SANTA_CRUZ = 1;
+  INTERIOR_TAHOE = 2;
+  INTERIOR_MOJAVE = 3;
+  INTERIOR_MOJAVE_PURLUXE = 4;
+  INTERIOR_SANTA_MONICA = 5;
+  INTERIOR_BIG_BASIN = 6;
+  INTERIOR_YOSEMITE = 7;
+  INTERIOR_OJAI = 8;
+  INTERIOR_SAPPHIRE = 9;
+}
+
+enum StrutType {
+  STRUT_TYPE_UNKNOWN = 0;
+  STRUT_TYPE_GAS = 1;
+  STRUT_TYPE_POWER = 2;
+}
+
+enum RoofType {
+  ROOF_TYPE_UNKNOWN = 0;
+  ROOF_TYPE_GLASS_CANOPY = 1;
+  ROOF_TYPE_METAL = 2;
+  ROOF_TYPE_CARBON_FIBER = 3;
+}
+
+enum RearSeatConfig {
+  REAR_SEAT_CONFIG_UNKNOWN = 0;
+  REAR_SEAT_CONFIG_5_SEAT = 1;
+  REAR_SEAT_CONFIG_6_SEAT = 2;
+  REAR_SEAT_CONFIG_7_SEAT = 3;
+}
+
+message VehicleConfig {
+  string vin = 1;
+  Model model = 2;
+  ModelVariant variant = 3;
+  string nickname = 5;
+  PaintColor paint_color = 6;
+  string ema_id = 7;
+  Wheels wheels = 8;
+  string country_code = 11;
+  string region_code = 12;
+  Edition edition = 13;
+  BatteryType battery = 14;
+  Interior interior = 15;
+  Look look = 17;
+  string exterior_color_code = 18;
+  string interior_color_code = 19;
+  StrutType frunk_strut = 20;
+  RoofType roof = 22;
+  RearSeatConfig rear_seat_config = 26;
+}
+
+enum WarningState {
+  WARNING_UNKNOWN = 0;
+  WARNING_OFF = 1;
+  WARNING_ON = 2;
+}
+
+enum BatteryPreconStatus {
+  BATTERY_PRECON_UNKNOWN = 0;
+  BATTERY_PRECON_OFF = 1;
+  BATTERY_PRECON_ON = 2;
+  BATTERY_PRECON_UNAVAILABLE = 3;
+}
+
+message BatteryState {
+  double remaining_range = 1;
+  double charge_percent = 2;
+  double kwhr = 3;
+  double capacity_kwhr = 4;
+  WarningState battery_health = 5;
+  WarningState low_charge_level = 6;
+  WarningState critical_charge_level = 7;
+  double unavailable_range = 8;
+  BatteryPreconStatus preconditioning_status = 9;
+  uint32 preconditioning_time_remaining = 10;
+  double battery_health_level = 11;
+}
+
+enum PowerState {
+  POWER_STATE_UNKNOWN = 0;
+  POWER_STATE_SLEEP = 1;
+  POWER_STATE_WINK = 2;
+  POWER_STATE_ACCESSORY = 3;
+  POWER_STATE_DRIVE = 4;
+  POWER_STATE_LIVE_CHARGE = 5;
+  POWER_STATE_SLEEP_CHARGE = 6;
+  POWER_STATE_LIVE_UPDATE = 7;
+  POWER_STATE_SLEEP_UPDATE = 8;
+  POWER_STATE_CLOUD_1 = 9;
+  POWER_STATE_CLOUD_2 = 10;
+  POWER_STATE_MONITOR = 11;
+}
+
+message CabinState {
+  double interior_temp = 1;
+  double exterior_temp = 2;
+}
+
+enum LockState {
+  LOCK_STATE_UNKNOWN = 0;
+  LOCK_STATE_UNLOCKED = 1;
+  LOCK_STATE_LOCKED = 2;
+}
+
+enum DoorState {
+  DOOR_STATE_UNKNOWN = 0;
+  DOOR_STATE_OPEN = 1;
+  DOOR_STATE_CLOSED = 2;
+  DOOR_STATE_AJAR = 3;
+  DOOR_STATE_CLOSE_ERROR = 4;
+}
+
+enum WalkawayState {
+  WALKAWAY_UNKNOWN = 0;
+  WALKAWAY_IDLE = 1;
+  WALKAWAY_ACTIVE = 2;
+  WALKAWAY_DISABLE = 3;
+}
+
+enum KeyfobBatteryStatus {
+  KEYFOB_BATTERY_STATUS_UNKNOWN = 0;
+  KEYFOB_BATTERY_STATUS_LOW = 1;
+  KEYFOB_BATTERY_STATUS_SUFFICIENT = 2;
+}
+
+enum AllWindowPosition {
+  ALL_WINDOW_POSITION_UNKNOWN = 0;
+  ALL_WINDOW_POSITION_IDLE = 1;
+  ALL_WINDOW_POSITION_OPEN = 2;
+  ALL_WINDOW_POSITION_CLOSED = 3;
+  ALL_WINDOW_POSITION_ERROR = 4;
+}
+
+enum WindowPositionStatus {
+  WINDOW_POSITION_STATUS_UNKNOWN = 0;
+  WINDOW_POSITION_STATUS_FULLY_CLOSED = 1;
+  WINDOW_POSITION_STATUS_ABOVE_SHORT_DROP_POSITION = 2;
+  WINDOW_POSITION_STATUS_SHORT_DROP_POSITION = 3;
+  WINDOW_POSITION_STATUS_BELOW_SHORT_DROP_POSITION = 4;
+  WINDOW_POSITION_STATUS_FULLY_OPEN = 5;
+  WINDOW_POSITION_STATUS_UNKNOWN_DE_INITIALIZED = 6;
+}
+
+message WindowPositionState {
+  WindowPositionStatus left_front = 1;
+  WindowPositionStatus left_rear = 2;
+  WindowPositionStatus right_front = 3;
+  WindowPositionStatus right_rear = 4;
+}
+
+enum MirrorFoldState {
+  MIRROR_FOLD_STATE_UNKNOWN = 0;
+  MIRROR_FOLD_STATE_IDLE = 1;
+  MIRROR_FOLD_STATE_FOLDED_OUT = 2;
+  MIRROR_FOLD_STATE_FOLDED_IN = 3;
+}
+
+enum AirSuspensionLevelStatus {
+  AIR_SUSPENSION_LEVEL_STATUS_UNKNOWN = 0;
+  AIR_SUSPENSION_LEVEL_STATUS_IDLE = 1;
+  AIR_SUSPENSION_LEVEL_STATUS_RAISING = 2;
+  AIR_SUSPENSION_LEVEL_STATUS_LOWERING = 3;
+  AIR_SUSPENSION_LEVEL_STATUS_PENDING = 4;
+}
+
+enum RideHeightStatus {
+  RIDE_HEIGHT_STATUS_UNKNOWN = 0;
+  RIDE_HEIGHT_STATUS_UNDEFINED = 1;
+  RIDE_HEIGHT_STATUS_LOWEST = 2;
+  RIDE_HEIGHT_STATUS_LOW = 3;
+  RIDE_HEIGHT_STATUS_STANDARD = 4;
+  RIDE_HEIGHT_STATUS_HIGH = 5;
+  RIDE_HEIGHT_STATUS_HIGHEST = 6;
+}
+
+enum UnattendedOccupantDetectionStatus {
+  UNATTENDED_OCCUPANT_DETECTION_STATUS_UNKNOWN = 0;
+  UNATTENDED_OCCUPANT_DETECTION_STATUS_NO_REQUEST = 1;
+  UNATTENDED_OCCUPANT_DETECTION_STATUS_STAGE_1 = 2;
+  UNATTENDED_OCCUPANT_DETECTION_STATUS_STAGE_2 = 3;
+  UNATTENDED_OCCUPANT_DETECTION_STATUS_STAGE_3 = 4;
+  UNATTENDED_OCCUPANT_DETECTION_STATUS_FAULT = 5;
+}
+
+enum LivingObjectDetectionStatus {
+  LIVING_OBJECT_DETECTION_STATUS_UNKNOWN = 0;
+  LIVING_OBJECT_DETECTION_STATUS_DISABLED = 1;
+  LIVING_OBJECT_DETECTION_STATUS_NOT_ACTIVE = 2;
+  LIVING_OBJECT_DETECTION_STATUS_LEVEL_1_WARNING = 3;
+  LIVING_OBJECT_DETECTION_STATUS_LEVEL_2_WARNING = 4;
+  LIVING_OBJECT_DETECTION_STATUS_LEVEL_3_WARNING = 5;
+}
+
+message BodyState {
+  LockState door_locks = 1;
+  DoorState front_cargo = 2;
+  DoorState rear_cargo = 3;
+  DoorState front_left_door = 4;
+  DoorState front_right_door = 5;
+  DoorState rear_left_door = 6;
+  DoorState rear_right_door = 7;
+  DoorState charge_port = 8;
+  WalkawayState walkaway_lock = 9;
+  KeyfobBatteryStatus keyfob_battery_status = 11;
+  MirrorFoldState front_left_mirror_fold_state = 12;
+  MirrorFoldState front_right_mirror_fold_state = 13;
+  AllWindowPosition all_windows_position = 14;
+  LivingObjectDetectionStatus living_object_detection_status = 15;
+  WindowPositionState window_position = 16;
+  AirSuspensionLevelStatus air_suspension_level_status = 17;
+  RideHeightStatus ride_height_status = 18;
+  UnattendedOccupantDetectionStatus unattended_occupant_detection_status = 19;
+}
+
+message ChassisState {
+  double odometer_km = 1;
+  string software_version = 16;
+  double speed = 29;
+}
+
+enum ChargeState {
+  CHARGE_STATE_UNKNOWN = 0;
+  CHARGE_STATE_NOT_CONNECTED = 1;
+  CHARGE_STATE_CABLE_CONNECTED = 2;
+  CHARGE_STATE_ESTABLISHING_SESSION = 3;
+  CHARGE_STATE_CHARGING = 8;
+  CHARGE_STATE_CHARGING_END_OK = 9;
+  CHARGE_STATE_CHARGING_END_ERROR = 10;
+  CHARGE_STATE_CHARGING_STOPPED = 13;
+  CHARGE_STATE_CHARGING_PAUSED = 14;
+  CHARGE_STATE_CHARGING_SCHEDULED = 30;
+}
+
+enum EnergyType {
+  ENERGY_TYPE_UNKNOWN = 0;
+  ENERGY_TYPE_AC = 1;
+  ENERGY_TYPE_DC = 2;
+  ENERGY_TYPE_NONE = 5;
+}
+
+message ChargingState {
+  ChargeState charge_state = 1;
+  EnergyType energy_type = 2;
+  double charge_session_mi = 5;
+  double charge_session_kwh = 6;
+  uint32 session_minutes_remaining = 7;
+  uint32 charge_limit = 8;
+  LockState cable_lock = 10;
+  double charge_rate_kwh_precise = 11;
+  double charge_rate_mph_precise = 12;
+  double charge_limit_percent = 14;
+  double port_power = 19;
+}
+
+message Location {
+  double latitude = 1;
+  double longitude = 2;
+}
+
+message Gps {
+  Location location = 1;
+  int32 elevation = 2;
+  uint64 position_time = 4;
+  double heading_precise = 5;
+}
+
+enum AlarmStatus {
+  ALARM_STATUS_UNKNOWN = 0;
+  ALARM_STATUS_DISARMED = 1;
+  ALARM_STATUS_ARMED = 2;
+  ALARM_STATUS_PRE_ALARM = 3;
+  ALARM_STATUS_TILT = 4;
+  ALARM_STATUS_SHOCK = 5;
+  ALARM_STATUS_INTRUSION = 6;
+  ALARM_STATUS_PANIC_MODE = 7;
+}
+
+enum AlarmMode {
+  ALARM_MODE_UNKNOWN = 0;
+  ALARM_MODE_OFF = 1;
+  ALARM_MODE_ON = 2;
+  ALARM_MODE_SILENT = 3;
+}
+
+message AlarmState {
+  AlarmStatus status = 1;
+  AlarmMode mode = 2;
+}
+
+enum CloudConnectionState {
+  CLOUD_CONNECTION_UNKNOWN = 0;
+  CLOUD_CONNECTION_CONNECTED = 1;
+  CLOUD_CONNECTION_DISCONNECTED = 2;
+}
+
+enum HvacPower {
+  HVAC_POWER_UNKNOWN = 0;
+  HVAC_ON = 1;
+  HVAC_OFF = 2;
+  HVAC_PRECONDITION = 3;
+}
+
+enum DefrostState {
+  DEFROST_STATE_UNKNOWN = 0;
+  DEFROST_ON = 1;
+  DEFROST_OFF = 2;
+}
+
+enum KeepClimateStatus {
+  KEEP_CLIMATE_STATUS_UNKNOWN = 0;
+  KEEP_CLIMATE_STATUS_INACTIVE = 1;
+  KEEP_CLIMATE_STATUS_ENABLED = 2;
+}
+
+enum MaxACState {
+  MAX_AC_STATE_UNKNOWN = 0;
+  MAX_AC_STATE_OFF = 1;
+  MAX_AC_STATE_ON = 2;
+}
+
+enum SteeringWheelHeaterLevel {
+  STEERING_WHEEL_HEATER_LEVEL_UNKNOWN = 0;
+  STEERING_WHEEL_HEATER_LEVEL_OFF = 1;
+  STEERING_WHEEL_HEATER_LEVEL_1 = 2;
+  STEERING_WHEEL_HEATER_LEVEL_2 = 3;
+  STEERING_WHEEL_HEATER_LEVEL_3 = 4;
+}
+
+enum SeatClimateMode {
+  SEAT_CLIMATE_MODE_UNKNOWN = 0;
+  SEAT_CLIMATE_MODE_OFF = 2;
+  SEAT_CLIMATE_MODE_LOW = 3;
+  SEAT_CLIMATE_MODE_MEDIUM = 4;
+  SEAT_CLIMATE_MODE_HIGH = 5;
+}
+
+message HvacState {
+  HvacPower power = 1;
+  DefrostState defrost = 2;
+  KeepClimateStatus keep_climate_status = 5;
+  MaxACState max_ac_status = 7;
+  double front_left_set_temperature = 13;
+}
+
+enum DriveMode {
+  DRIVE_MODE_UNKNOWN = 0;
+  DRIVE_MODE_COMFORT = 1;
+  DRIVE_MODE_SWIFT = 2;
+  DRIVE_MODE_WINTER = 3;
+  DRIVE_MODE_VALET = 4;
+  DRIVE_MODE_SPORT_PLUS = 5;
+  DRIVE_MODE_SERVICE = 8;
+  DRIVE_MODE_LAUNCH = 9;
+  DRIVE_MODE_FACTORY = 10;
+}
+
+enum GearPosition {
+  GEAR_UNKNOWN = 0;
+  GEAR_PARK = 1;
+  GEAR_REVERSE = 2;
+  GEAR_NEUTRAL = 3;
+  GEAR_DRIVE = 4;
+}
+
+enum KeylessDrivingState {
+  KEYLESS_DRIVING_UNKNOWN = 0;
+  KEYLESS_DRIVING_ON = 1;
+  KEYLESS_DRIVING_OFF = 2;
+}
+
+enum TcuState {
+  TCU_UNKNOWN = 0;
+  TCU_SLEEP = 1;
+  TCU_DROWSY = 2;
+  TCU_CLOUD = 3;
+  TCU_FULL = 4;
+}
+
+enum LowPowerModeStatus {
+  LOW_POWER_MODE_STATUS_UNKNOWN = 0;
+  LOW_POWER_MODE_STATUS_INACTIVE = 1;
+  LOW_POWER_MODE_STATUS_ACTIVE = 2;
+}
+
+message SoftwareUpdate {
+  string version_available = 1;
+  uint32 percent_complete = 4;
+}
+
+message MobileAppReqState {
+  LockState vehicle_unlock_request = 17;
+}
+
+message SentryState {
+  bool placeholder = 1;
+}
+
+message FaultState {
+  bool placeholder = 7;
+}
+
+message Notifications {
+  bool placeholder = 1;
+}
+
+message TrailerState {}
+
+message TcuInternetState {
+  bool placeholder = 1;
+}
+
+message FactoryResetState {
+  bool placeholder = 1;
+}
+
+message VehicleState {
+  BatteryState battery = 1;
+  PowerState power = 2;
+  CabinState cabin = 3;
+  BodyState body = 4;
+  uint64 last_updated_ms = 5;
+  ChassisState chassis = 6;
+  ChargingState charging = 8;
+  Gps gps = 11;
+  SoftwareUpdate software_update = 12;
+  AlarmState alarm = 13;
+  CloudConnectionState cloud_connection = 15;
+  KeylessDrivingState keyless_driving = 16;
+  HvacState hvac = 17;
+  DriveMode drive_mode = 18;
+  GearPosition gear_position = 20;
+  MobileAppReqState mobile_app_request = 21;
+  TcuState tcu = 22;
+  TcuInternetState tcu_internet = 23;
+  SentryState sentry_state = 24;
+  FaultState fault_state = 25;
+  Notifications notifications = 26;
+  FactoryResetState factory_reset_state = 27;
+  LowPowerModeStatus low_power_mode_status = 28;
+  TrailerState trailer_state = 29;
+}
+
+message Vehicle {
+  string vehicle_id = 1;
+  AccessLevel access_level = 2;
+  VehicleConfig config = 3;
+  VehicleState state = 4;
+}
+
+message GetVehicleStateRequest {
+  string vehicle_id = 1;
+}
+
+message ChargingSchedule {
+  bool schedule_on = 1;
+  string start_time = 2;
+  string end_time = 3;
+  bool weekday_on = 4;
+  bool charging_available = 5;
+}
+
+message GetVehicleStateResponse {
+  string vehicle_id = 1;
+  VehicleState state = 2;
+  ChargingSchedule charging_schedule = 3;
+}
+
+message WakeupVehicleRequest {
+  string vehicle_id = 1;
+}
+
+message WakeupVehicleResponse {}
+
+service VehicleStateService {
+  rpc GetVehicleState(GetVehicleStateRequest) returns (GetVehicleStateResponse) {}
+  rpc WakeupVehicle(WakeupVehicleRequest) returns (WakeupVehicleResponse) {}
+}

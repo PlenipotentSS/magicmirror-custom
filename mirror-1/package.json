@@ -1,0 +1,6 @@
+{
+  "name": "mirror-1",
+  "scripts": {
+    "start": "cp $(realpath ../mirror-1/config.js) ../MagicMirror/config/config.mirror-1.js && cp $(realpath ../mirror-1/custom.css) ../MagicMirror/config/custom.css && cd ../MagicMirror && MM_CONFIG_FILE=$(realpath config/config.mirror-1.js) node serveronly"
+  }
+}

@@ -1,0 +1,59 @@
+.MMM-TeslaEnergy {
+  font-family: inherit;
+  text-align: center;
+}
+
+.tesla-grid {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.tesla-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 70px;
+}
+
+.tesla-icon {
+  font-size: 1.4em;
+  line-height: 1.2;
+}
+
+.tesla-value {
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 2px;
+}
+
+.tesla-label {
+  margin-top: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Battery charge level colors */
+.battery-low .tesla-value  { color: #ff4444; }
+.battery-medium .tesla-value { color: #ffbb33; }
+.battery-high .tesla-value { color: #00C851; }
+
+/* Solar — golden when producing */
+.solar .tesla-value { color: #f0c040; }
+.solar { min-height: 100px; justify-content: flex-end; padding-bottom: 4px; }
+
+/* Grid export (sending power out) */
+.grid .tesla-value { color: #aaaaaa; }
+
+.tesla-updated {
+  margin-top: 8px;
+  opacity: 0.5;
+}
+
+.tesla-error {
+  color: #ff4444;
+  padding: 8px;
+}

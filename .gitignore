@@ -1,0 +1,23 @@
+# Secrets & credentials
+*.pem
+credentials.json
+token.json
+jokes.json
+.turbo/
+node_modules/
+
+# Personal energy usage data
+kwh-baseline.json
+solar_log.json
+
+# Mirror configs (contain API keys, passwords, calendar URLs)
+mirror-1/config.js
+mirror-2/config.js
+
+# MagicMirror/config/ copies — these mirror the above and contain the same secrets
+MagicMirror/config/config.js
+MagicMirror/config/config.mirror-1.js
+MagicMirror/config/config.mirror-2.js
+
+# Claude Code local settings
+.claude/

@@ -1,0 +1,57 @@
+.MMM-FlumeWater {
+  font-family: inherit;
+  text-align: center;
+}
+
+.flume-grid {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.flume-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 70px;
+}
+
+.flume-value {
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 2px;
+}
+
+.flume-label {
+  margin-top: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.flume-subtitle {
+  margin-top: 2px;
+  color: #44aaff;
+}
+
+/* Matches solar cell layout — chart as background, content floated to bottom */
+.flow { min-height: 100px; justify-content: flex-end; padding-bottom: 4px; }
+
+/* Idle (no flow) — grey, like grid cell */
+.flow-idle .flume-value { color: #888888; }
+
+/* Active flow — blue */
+.flow-low .flume-value    { color: #44aaff; }
+.flow-medium .flume-value { color: #ffbb33; }
+.flow-high .flume-value   { color: #ff4444; }
+
+.flume-updated {
+  margin-top: 8px;
+  opacity: 0.5;
+}
+
+.flume-error {
+  color: #ff4444;
+  padding: 8px;
+}

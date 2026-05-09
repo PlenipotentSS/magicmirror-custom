@@ -1,0 +1,9 @@
+{
+  "name": "mmm-senseenergy",
+  "version": "1.0.0",
+  "description": "MagicMirror² module — Sense Energy Monitor real-time display",
+  "main": "MMM-SenseEnergy.js",
+"dependencies": {
+    "ws": "^8.18.0"
+  }
+}

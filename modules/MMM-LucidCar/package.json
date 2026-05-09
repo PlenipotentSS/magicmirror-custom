@@ -1,0 +1,11 @@
+{
+  "name": "mmm-lucidcar",
+  "version": "1.0.0",
+  "description": "MagicMirror² module for Lucid Motors vehicle status",
+  "main": "MMM-LucidCar.js",
+  "dependencies": {
+    "@grpc/grpc-js": "^1.10.0",
+    "@grpc/proto-loader": "^0.7.0",
+    "google-proto-files": "^4.0.0"
+  }
+}

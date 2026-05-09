@@ -1,0 +1,298 @@
+/* MMM-UnifiNetwork — dark theme, Mario color palette */
+
+.MMM-UnifiNetwork {
+  --mario-red:    #e52222;
+  --mario-yellow: #f8d800;
+  --mario-green:  #22a832;
+  --mario-white:  #f0f0f0;
+  --mario-blue:   #44aaff;
+  --bg-card:      rgba(255, 255, 255, 0.06);
+  --radius:       8px;
+
+  font-family: "Roboto Condensed", "Arial Narrow", Arial, sans-serif;
+  color: var(--mario-white);
+  width: 100%;
+  max-width: 420px;
+}
+
+/* ── WAN Status Bar ──────────────────────────────────────────────── */
+
+.un-wan-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 7px 12px;
+  margin-bottom: 12px;
+  border-radius: var(--radius);
+  background-color: var(--bg-card);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.un-wan-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background-color: var(--mario-green);
+  flex-shrink: 0;
+  animation: pulse-wan 2.5s ease-in-out infinite;
+}
+
+@keyframes pulse-wan {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(34, 168, 50, 0.6); }
+  50%       { box-shadow: 0 0 0 5px rgba(34, 168, 50, 0); }
+}
+
+.un-wan-arrow {
+  color: rgba(240, 240, 240, 0.45);
+  margin-right: 3px;
+  font-size: 11px;
+}
+
+.un-wan-unit {
+  font-size: 10px;
+  font-weight: 400;
+  color: rgba(240, 240, 240, 0.5);
+}
+
+.un-wan-stat {
+  white-space: nowrap;
+}
+
+.un-wan-ip {
+  font-size: 10px;
+  color: rgba(240, 240, 240, 0.35);
+  margin-left: auto;
+  font-family: "Roboto Mono", monospace;
+}
+
+.un-wan-offline {
+  padding: 10px 14px;
+  margin-bottom: 12px;
+  border-radius: var(--radius);
+  background-color: var(--mario-red);
+  color: var(--mario-white);
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-align: center;
+  animation: pulse-red 1.2s ease-in-out infinite;
+}
+
+@keyframes pulse-red {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.7; }
+}
+
+/* ── Section Headings ────────────────────────────────────────────── */
+
+.un-section {
+  margin-bottom: 14px;
+}
+
+.un-section-heading {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 10px;
+  margin-bottom: 8px;
+  border-radius: var(--radius);
+  background-color: rgba(255, 255, 255, 0.05);
+  border-left: 3px solid rgba(255, 255, 255, 0.15);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: rgba(240, 240, 240, 0.75);
+}
+
+.un-section-icon {
+  font-size: 13px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.un-section-heading--clients   { border-left-color: var(--mario-blue); }
+.un-section-heading--clients   .un-section-icon { color: var(--mario-blue); }
+
+.un-section-heading--bandwidth { border-left-color: rgba(240, 240, 240, 0.3); }
+.un-section-heading--bandwidth .un-section-icon { color: rgba(240, 240, 240, 0.4); }
+
+.un-section-heading--devices-ok   { border-left-color: var(--mario-green); }
+.un-section-heading--devices-ok   .un-section-icon { color: var(--mario-green); }
+
+.un-section-heading--devices-warn { border-left-color: var(--mario-red); }
+.un-section-heading--devices-warn .un-section-icon { color: var(--mario-yellow); }
+
+/* ── Client Count ────────────────────────────────────────────────── */
+
+.un-client-bar-wrap {
+  height: 8px;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  margin-bottom: 5px;
+}
+
+.un-client-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  background-color: var(--mario-blue);
+  transition: width 0.6s ease;
+}
+
+.un-client-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: rgba(240, 240, 240, 0.55);
+}
+
+.un-client-total-label,
+.un-client-wired-label {
+  white-space: nowrap;
+}
+
+/* ── Bandwidth Bar ───────────────────────────────────────────────── */
+
+.un-bw-row {
+  margin-bottom: 6px;
+}
+
+.un-bw-bar-wrap {
+  height: 6px;
+  border-radius: 3px;
+  background-color: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  margin-bottom: 3px;
+}
+
+.un-bw-bar-wrap.avg {
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+.un-bw-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  background-color: var(--mario-green);
+  transition: width 0.6s ease;
+}
+
+.un-bw-bar-fill.avg  { opacity: 0.45; }
+.un-bw-bar-fill.mid  { background-color: var(--mario-yellow); }
+.un-bw-bar-fill.high { background-color: var(--mario-red); }
+
+.un-bw-label {
+  font-size: 10px;
+  color: rgba(240, 240, 240, 0.4);
+  text-align: right;
+  font-family: "Roboto Mono", monospace;
+}
+
+/* ── Device Grid ─────────────────────────────────────────────────── */
+
+.un-device-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.un-device-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 10px;
+  border-radius: var(--radius);
+  background-color: var(--bg-card);
+  border: 1px solid transparent;
+  transition: border-color 0.3s;
+}
+
+.un-device-card.offline {
+  border-color: rgba(229, 34, 34, 0.5);
+  background-color: rgba(229, 34, 34, 0.08);
+}
+
+.un-device-left {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  overflow: hidden;
+}
+
+.un-device-icon {
+  font-size: 13px;
+  color: rgba(240, 240, 240, 0.4);
+  flex-shrink: 0;
+}
+
+.un-device-card.offline .un-device-icon {
+  color: var(--mario-red);
+}
+
+.un-device-name {
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+}
+
+.un-device-card.offline .un-device-name {
+  font-weight: 700;
+  color: var(--mario-white);
+}
+
+.un-device-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.un-device-stats {
+  font-size: 10px;
+  color: rgba(240, 240, 240, 0.4);
+  font-family: "Roboto Mono", monospace;
+  white-space: nowrap;
+}
+
+.un-device-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.un-device-dot.online  { background-color: rgba(34, 168, 50, 0.5); }
+.un-device-dot.offline {
+  background-color: var(--mario-red);
+  animation: pulse-dot 1.8s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.35; }
+}
+
+.un-devices-all-ok {
+  font-size: 11px;
+  color: rgba(34, 168, 50, 0.7);
+  padding: 2px 2px 4px;
+}
+
+/* ── Misc ────────────────────────────────────────────────────────── */
+
+.un-skeleton {
+  font-size: 11px;
+  color: rgba(240, 240, 240, 0.2);
+  padding: 6px 2px;
+  font-style: italic;
+}
+
+.un-empty {
+  font-size: 11px;
+  color: rgba(240, 240, 240, 0.28);
+  font-style: italic;
+  padding: 3px 2px;
+}

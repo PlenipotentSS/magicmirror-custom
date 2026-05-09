@@ -1,0 +1,181 @@
+/* ── Variables ──────────────────────────────────────────────────────────── */
+:root {
+  --mario-red:    #e52222;
+  --mario-yellow: #e5a000;
+  --mario-green:  #22bb55;
+  --mario-white:  #ffffff;
+}
+
+/* ── Wrapper ────────────────────────────────────────────────────────────── */
+.MMM-Synology {
+  font-family: inherit;
+  text-align: left;
+  padding: 4px 0;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  transition: border-color 0.3s;
+}
+
+/* Alert border pulses */
+.MMM-Synology.syno-alert-yellow {
+  --alert-color: var(--mario-yellow);
+  animation: synoAlert 1.4s ease-in-out infinite;
+}
+.MMM-Synology.syno-alert-red {
+  --alert-color: var(--mario-red);
+  animation: synoAlert 0.8s ease-in-out infinite;
+}
+
+@keyframes synoAlert {
+  0%, 100% { border-color: var(--alert-color); }
+  50%       { border-color: transparent; }
+}
+
+/* ── Footer row ─────────────────────────────────────────────────────────── */
+.syno-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-top: 3px;
+}
+
+/* ── RAID status ────────────────────────────────────────────────────────── */
+.syno-raid {
+  font-size: 0.7em;
+  color: var(--mario-white);
+  opacity: 0.75;
+}
+
+.syno-raid-degraded {
+  color: var(--mario-yellow);
+  opacity: 1;
+  animation: synoTextPulse 1.4s ease-in-out infinite;
+}
+
+.syno-raid-crashed {
+  color: var(--mario-red);
+  opacity: 1;
+  animation: synoTextPulse 0.8s ease-in-out infinite;
+}
+
+@keyframes synoTextPulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.35; }
+}
+
+/* ── Drive bays ─────────────────────────────────────────────────────────── */
+.syno-drives {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  margin-bottom: 6px;
+}
+
+.syno-bay-block {
+  width: 18px;
+  height: 26px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+.syno-bay-green  { background: var(--mario-green);  opacity: 0.85; }
+.syno-bay-yellow { background: var(--mario-yellow); opacity: 0.9; }
+.syno-bay-red    { background: var(--mario-red); }
+.syno-bay-gray   { background: #333; }
+
+/* ── Volume bar ─────────────────────────────────────────────────────────── */
+.syno-volume {
+  margin-bottom: 5px;
+}
+
+.syno-vol-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 2px;
+}
+
+.syno-vol-label {
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.syno-vol-pct {
+  opacity: 0.75;
+}
+
+.syno-bar-track {
+  height: 6px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.syno-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.6s ease;
+}
+.syno-bar-green  { background: var(--mario-green); }
+.syno-bar-yellow { background: var(--mario-yellow); }
+.syno-bar-red    { background: var(--mario-red); }
+
+/* ── Status dot (shared) ────────────────────────────────────────────────── */
+.syno-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.syno-dot-green  { background: var(--mario-green); }
+.syno-dot-yellow { background: var(--mario-yellow); }
+.syno-dot-red    { background: var(--mario-red); }
+.syno-dot-gray   { background: #555; }
+
+/* ── VMs ────────────────────────────────────────────────────────────────── */
+.syno-vms {
+  margin-top: 5px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding-top: 4px;
+}
+
+.syno-vm-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.72em;
+  line-height: 1.7;
+}
+
+.syno-vm-name {
+  flex: 1;
+}
+
+.syno-vm-down {
+  color: var(--mario-red);
+  opacity: 0.8;
+}
+
+.syno-vm-stat {
+  font-size: 0.9em;
+  color: #4a9eff;
+  opacity: 0.75;
+  margin-left: 4px;
+}
+
+.syno-vm-ip {
+  font-size: 0.9em;
+  color: var(--mario-yellow);
+  opacity: 0.7;
+  margin-left: 4px;
+}
+
+/* ── Temperature ────────────────────────────────────────────────────────── */
+.syno-temp {
+  font-size: 0.7em;
+}
+
+.syno-temp-green  { color: var(--mario-white);  opacity: 0.75; }
+.syno-temp-yellow { color: var(--mario-yellow); opacity: 0.85; }
+.syno-temp-red    { color: var(--mario-red); }

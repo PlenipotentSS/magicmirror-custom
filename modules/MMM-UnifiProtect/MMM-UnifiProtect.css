@@ -1,0 +1,271 @@
+/* MMM-UnifiProtect — dark theme, Mario color palette */
+
+.MMM-UnifiProtect {
+  --mario-red:    #e52222;
+  --mario-yellow: #f8d800;
+  --mario-green:  #22a832;
+  --mario-white:  #f0f0f0;
+  --mario-blue:   #44aaff;
+  --bg-card:      rgba(255, 255, 255, 0.06);
+  --radius:       12px;
+
+  font-family: "Roboto Condensed", "Arial Narrow", Arial, sans-serif;
+  color: var(--mario-white);
+  width: 100%;
+  max-width: 420px;
+}
+
+/* ── Sections ────────────────────────────────────────────────────── */
+
+.up-section {
+  margin-bottom: 16px;
+}
+
+.up-section-heading {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 10px;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-left: 3px solid rgba(255, 255, 255, 0.15);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: rgba(240, 240, 240, 0.75);
+}
+
+.up-section-icon {
+  font-size: 13px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+/* Per-section accent colours */
+.up-section-heading--sensors {
+  border-left-color: var(--mario-green);
+  color: rgba(240, 240, 240, 0.85);
+}
+.up-section-heading--sensors .up-section-icon { color: var(--mario-green); }
+
+.up-section-heading--offline {
+  border-left-color: var(--mario-red);
+  color: rgba(240, 240, 240, 0.85);
+}
+.up-section-heading--offline .up-section-icon { color: var(--mario-yellow); }
+
+.up-section-heading--events {
+  border-left-color: var(--mario-blue);
+  color: rgba(240, 240, 240, 0.85);
+}
+.up-section-heading--events .up-section-icon { color: var(--mario-blue); }
+
+.up-section-heading--smart {
+  border-left-color: var(--mario-yellow);
+  color: rgba(240, 240, 240, 0.85);
+}
+.up-section-heading--smart .up-section-icon { color: var(--mario-yellow); }
+
+.up-empty {
+  font-size: 12px;
+  color: rgba(240, 240, 240, 0.28);
+  font-style: italic;
+  padding: 4px 2px;
+}
+
+/* ── Sensor Grid ─────────────────────────────────────────────────── */
+
+.up-sensor-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.up-sensor-card {
+  /* 4 per row with gap accounted for */
+  flex: 0 0 calc(25% - 5px);
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  background-color: rgba(255, 255, 255, 0.08);
+  transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
+  box-sizing: border-box;
+  padding: 4px 6px;
+}
+
+/* Closed — filled square, dim */
+.up-sensor-card.door-closed {
+  background-color: rgba(34, 168, 50, 0.15);
+  border-color: rgba(34, 168, 50, 0.4);
+}
+
+/* Open — border only, no fill, glowing */
+.up-sensor-card.door-open {
+  background-color: transparent;
+  border-color: var(--mario-red);
+  animation: sq-glow-red 1.4s ease-in-out infinite;
+}
+
+@keyframes sq-glow-red {
+  0%, 100% { box-shadow: 0 0 6px 2px rgba(229, 34, 34, 0.35); }
+  50%       { box-shadow: 0 0 14px 5px rgba(229, 34, 34, 0.7); }
+}
+
+/* Motion active — yellow border only + glow */
+.up-sensor-card.motion-active {
+  background-color: transparent;
+  border-color: var(--mario-yellow);
+  animation: sq-glow-yellow 1.4s ease-in-out infinite;
+}
+
+@keyframes sq-glow-yellow {
+  0%, 100% { box-shadow: 0 0 6px 2px rgba(248, 216, 0, 0.3); }
+  50%       { box-shadow: 0 0 14px 5px rgba(248, 216, 0, 0.65); }
+}
+
+.up-sensor-name {
+  font-size: 10px;
+  font-weight: 600;
+  text-align: center;
+  color: rgba(240, 240, 240, 0.7);
+  line-height: 1.2;
+  word-break: break-word;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.up-sensor-card.door-open .up-sensor-name,
+.up-sensor-card.motion-active .up-sensor-name {
+  color: var(--mario-white);
+  font-weight: 700;
+}
+
+.up-sensor-batt.low {
+  font-size: 9px;
+  color: var(--mario-red);
+  font-weight: 600;
+  text-align: center;
+}
+
+/* ── Camera Health Row ───────────────────────────────────────────── */
+
+.up-camera-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.up-camera-chip {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 10px;
+  border-radius: 20px;
+  background-color: var(--bg-card);
+  font-size: 12px;
+}
+
+.up-camera-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.up-camera-dot.online  { background-color: var(--mario-green); }
+.up-camera-dot.offline {
+  background-color: var(--mario-red);
+  animation: pulse-dot 1.8s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+
+.up-camera-name {
+  color: rgba(240, 240, 240, 0.8);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 120px;
+}
+
+/* ── Event Feed ──────────────────────────────────────────────────── */
+
+.up-event-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.up-event-row {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  padding: 5px 8px;
+  border-radius: 8px;
+  background-color: var(--bg-card);
+  font-size: 12px;
+}
+
+.up-event-icon {
+  font-size: 13px;
+  flex-shrink: 0;
+  color: rgba(240, 240, 240, 0.55);
+}
+
+.up-event-body {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.up-event-type {
+  color: rgba(240, 240, 240, 0.6);
+  font-size: 11px;
+}
+
+.up-event-time {
+  font-family: "Roboto Mono", "Courier New", monospace;
+  font-size: 10px;
+  color: rgba(240, 240, 240, 0.4);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ── Smart Detect Feed ───────────────────────────────────────────── */
+
+.up-smart-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.up-smart-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 6px;
+  padding: 5px 8px;
+  border-radius: 8px;
+  background-color: var(--bg-card);
+  border-left: 3px solid var(--mario-yellow);
+}
+
+.up-smart-label {
+  font-size: 12px;
+  font-weight: 600;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

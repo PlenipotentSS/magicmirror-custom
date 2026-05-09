@@ -1,0 +1,9 @@
+{
+  "name": "mmm-levitonpanel",
+  "version": "1.0.0",
+  "description": "MagicMirror² module — Leviton Smart Load Center real-time circuit display",
+  "main": "MMM-LevitonPanel.js",
+  "dependencies": {
+    "ws": "^8.18.0"
+  }
+}

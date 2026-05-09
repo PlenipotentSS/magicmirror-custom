@@ -1,0 +1,10 @@
+{
+  "name": "MMM-UnifiProtect",
+  "version": "1.0.0",
+  "description": "MagicMirror² module for UniFi Protect sensor status, camera health, and smart detection",
+  "main": "MMM-UnifiProtect.js",
+  "type": "commonjs",
+  "dependencies": {
+    "unifi-protect": "^4.29.0"
+  }
+}

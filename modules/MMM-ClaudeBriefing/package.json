@@ -1,0 +1,9 @@
+{
+  "name": "MMM-ClaudeBriefing",
+  "version": "1.0.0",
+  "description": "MagicMirror² module — personalized daily briefing via Anthropic Claude API",
+  "main": "MMM-ClaudeBriefing.js",
+  "dependencies": {
+    "node-fetch": "^2.7.0"
+  }
+}

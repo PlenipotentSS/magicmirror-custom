@@ -1,0 +1,21 @@
+{
+  "name": "magicmirror-custom",
+  "private": true,
+  "packageManager": "npm@11.12.1",
+  "workspaces": [
+    "mirror-1",
+    "mirror-2"
+  ],
+  "scripts": {
+    "start": "turbo run start",
+    "start:mirror-1": "turbo run start --filter=mirror-1",
+    "start:mirror-2": "turbo run start --filter=mirror-2",
+    "setup": "./scripts/setup.sh",
+    "deploy": "./scripts/deploy.sh all",
+    "deploy:mirror-1": "./scripts/deploy.sh mirror-1",
+    "deploy:mirror-2": "./scripts/deploy.sh mirror-2"
+  },
+  "devDependencies": {
+    "turbo": "^2.9.6"
+  }
+}

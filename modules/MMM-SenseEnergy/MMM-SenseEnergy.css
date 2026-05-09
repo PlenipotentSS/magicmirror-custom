@@ -1,0 +1,96 @@
+/* ── Design tokens ── */
+.MMM-SenseEnergy {
+  --mario-red:    #E52521;
+  --mario-yellow: #FBD000;
+  --mario-green:  #43B047;
+  --mario-white:  #FFFFFF;
+  --panel-bg:     rgba(255, 255, 255, 0.05);
+  --panel-border: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+/* ── Card shell ── */
+.MMM-SenseEnergy.panel-card {
+  min-width: 220px;
+  color: var(--mario-white);
+  font-family: inherit;
+}
+
+/* ── Icon + data row ── */
+.MMM-SenseEnergy .panel-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+/* ── SVG panel icon ── */
+.MMM-SenseEnergy .panel-icon-wrap {
+  flex-shrink: 0;
+  opacity: 0.85;
+}
+
+.MMM-SenseEnergy .panel-icon .pi-body {
+  fill: rgba(255, 255, 255, 0.06);
+  stroke: rgba(255, 255, 255, 0.20);
+  stroke-width: 1.5;
+}
+
+.MMM-SenseEnergy .panel-icon .pi-main-bar {
+  fill: rgba(255, 255, 255, 0.10);
+}
+
+.MMM-SenseEnergy .panel-icon .pi-main-breaker {
+  fill: rgba(255, 255, 255, 0.25);
+  rx: 1;
+}
+
+.MMM-SenseEnergy .panel-icon .pi-breaker {
+  fill: rgba(255, 255, 255, 0.10);
+}
+
+/* ── Data column ── */
+.MMM-SenseEnergy .panel-data-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.MMM-SenseEnergy .panel-watts {
+  font-size: 38px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -1px;
+  color: var(--mario-white);
+}
+
+.MMM-SenseEnergy .panel-watts.watts-green  { color: var(--mario-green); }
+.MMM-SenseEnergy .panel-watts.watts-yellow { color: var(--mario-yellow); }
+.MMM-SenseEnergy .panel-watts.watts-red    { color: var(--mario-red); }
+
+.MMM-SenseEnergy .panel-top-consumer {
+  font-size: 11px;
+  color: var(--mario-yellow);
+  opacity: 0.85;
+  line-height: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 160px;
+}
+
+.MMM-SenseEnergy .panel-kwh {
+  font-size: 12px;
+  opacity: 0.55;
+  line-height: 1;
+}
+
+/* ── Status states ── */
+.MMM-SenseEnergy .panel-status {
+  font-size: 11px;
+  padding: 4px 0;
+}
+
+.MMM-SenseEnergy .panel-loading { opacity: 0.45; }
+.MMM-SenseEnergy .panel-error   { color: var(--mario-red); }

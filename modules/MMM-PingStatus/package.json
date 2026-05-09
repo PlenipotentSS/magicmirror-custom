@@ -1,0 +1,9 @@
+{
+  "name": "MMM-PingStatus",
+  "version": "1.0.0",
+  "description": "MagicMirror² module for uptime and latency checks",
+  "main": "MMM-PingStatus.js",
+  "dependencies": {
+    "ping": "^0.4.4"
+  }
+}

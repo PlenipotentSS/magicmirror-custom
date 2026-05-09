@@ -1,0 +1,517 @@
+/* =====================================================
+   Steven's Magic Mirror — Custom CSS
+   MagicMirror/css/custom.css
+   ===================================================== */
+
+/* ── Google Fonts ── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+/* ── Palette & theme overrides (replaces main.css defaults) ── */
+:root {
+  --color-text:        rgba(255, 255, 255, 0.6);
+  --color-text-dimmed: rgba(255, 255, 255, 0.35);
+  --color-text-bright: #ffffff;
+  --color-background:  transparent;
+  --color-accent:      #FBD000;
+  --color-divider:     rgba(255, 255, 255, 0.08);
+  --font-primary:      "Inter";
+  --font-secondary:    "Inter";
+  --font-size:         16px;
+  --font-size-xsmall:  0.7rem;
+  --font-size-small:   0.875rem;
+  --font-size-medium:  1.25rem;
+  --font-size-large:   2.75rem;
+  --font-size-xlarge:  3.5rem;
+  --gap-body-top:      40px;
+  --gap-body-right:    48px;
+  --gap-body-bottom:   40px;
+  --gap-body-left:     48px;
+  --gap-modules:       20px;
+  --col-width:         30%;
+  --col-divider:       1px solid rgba(255, 255, 255, 0.06);
+
+  /* local aliases */
+  --accent:       #FBD000;
+  --white:        #FFFFFF;
+  --blue:         #44aaff;
+  --muted:        rgba(255, 255, 255, 0.45);
+  --divider:      rgba(255, 255, 255, 0.08);
+  --bg:           transparent;
+}
+
+/* ── Layout overrides ── */
+.region.upper.third  { top: 28%; }
+.region.middle.center { top: 52%; }
+.region.lower.third  { top: 74%; }
+
+.region.left  { width: var(--col-width); }
+.region.right { width: var(--col-width); }
+
+.region.center:not(.bar):not(.third) {
+  width: var(--col-width);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Vertical column dividers */
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  top: var(--gap-body-top);
+  bottom: var(--gap-body-bottom);
+  width: 1px;
+  background: var(--col-divider);
+  pointer-events: none;
+}
+body::before { left:  calc(var(--gap-body-left)  + var(--col-width) + 2%); }
+body::after  { right: calc(var(--gap-body-right) + var(--col-width) + 2%); }
+
+/* ── Header overrides ── */
+header {
+  font-weight: 600;
+  letter-spacing: 2px;
+  border-bottom: 1px solid var(--color-divider);
+  padding-bottom: 6px;
+  margin-bottom: 12px;
+  color: var(--color-accent);
+}
+
+/* ── Base ── */
+body {
+  background-color: transparent;
+  font-family: 'Inter', sans-serif;
+  color: var(--white);
+}
+
+/* Black background only for browser access (not Electron) */
+html.browser-mode body {
+  background-color: #0A0A0A;
+}
+
+/* ── Module Cards — no borders, no background ── */
+.module {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  margin-bottom: 24px;
+}
+
+/* ── Module Headers — underline only ── */
+.module-header {
+  display: flex !important;
+  align-items: baseline;
+  justify-content: space-between;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--accent) !important;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  margin-bottom: 12px;
+}
+
+.module-header-updated {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  text-transform: none;
+  color: var(--muted);
+  margin-left: 8px;
+  flex-shrink: 0;
+}
+
+/* ── Digital Clock ── */
+.MMM-DigClock {
+  text-align: left;
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+
+.MMM-DigClock .time {
+  color: var(--accent) !important;
+  font-size: 80px !important;
+  font-weight: 900 !important;
+}
+
+.MMM-DigClock .date {
+  color: var(--white) !important;
+  font-size: 20px !important;
+  font-family: "DS-Digital", monospace !important;
+  font-weight: 900 !important;
+  letter-spacing: 3px !important;
+  text-transform: uppercase !important;
+  line-height: 1 !important;
+  margin-top: -6px !important;
+  display: block;
+}
+
+.MMM-DigClock .week {
+  color: var(--accent) !important;
+  opacity: 0.6;
+}
+
+/* ── Weather ── */
+
+.MMM-OpenWeatherMapForecast table {
+  width: 100% !important;
+  table-layout: fixed !important;
+}
+
+.weather .weatherIcon,
+.MMM-OpenWeatherMapForecast .wi {
+  color: var(--accent) !important;
+}
+
+.weather .large,
+.MMM-OpenWeatherMapForecast .large {
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.weather .normal,
+.MMM-OpenWeatherMapForecast .normal {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.MMM-OpenWeatherMapForecast .high-temp,
+.MMM-OpenWeatherMapForecast .low-temp,
+.MMM-OpenWeatherMapForecast .temp-container {
+  font-size: 13px !important;
+}
+
+.MMM-OpenWeatherMapForecast .forecast-icon-container {
+  height: 55px;
+}
+
+.MMM-OpenWeatherMapForecast .wrapper.tiled .forecast-container .forecast-item .temperature-container {
+  font-size: 18px;
+}
+
+.MMM-OpenWeatherMapForecast .wrapper.tiled .forecast-container .forecast-item .precipitation-container {
+  font-size: 14px;
+}
+
+.MMM-OpenWeatherMapForecast .wrapper.tiled .forecast-container .forecast-item:last-of-type {
+  display: none;
+}
+
+.MMM-OpenWeatherMapForecast .wind {
+  font-size: 9px !important;
+  color: var(--muted);
+}
+
+.MMM-OpenWeatherMapForecast .forecast-icon {
+  font-size: 14px !important;
+}
+
+.MMM-OpenWeatherMapForecast .current-conditions-wrapper,
+.MMM-OpenWeatherMapForecast .extra-current-conditions-wrapper,
+.MMM-OpenWeatherMapForecast .summary-wrapper {
+  text-align: center;
+}
+
+.MMM-OpenWeatherMapForecast .inline-icon, .MMM-OpenWeatherMapForecast .wrapper.tiled .forecast-container .forecast-item .inline-icon {
+  width: 20px;
+  height: 20px;
+}
+.MMM-OpenWeatherMapForecast .wrapper.tiled .forecast-container .forecast-item .wind-container {
+  font-size: 10px;
+}
+
+/* ── Calendar ── */
+
+.MMM-OpenWeatherMapForecast,
+.MMM-OpenWeatherMapForecast .module-content {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.MMM-CalendarExt3Agenda .CX3A {
+  width: 100%;
+  max-width: 100%;
+}
+
+.calendar table { width: 100%; }
+
+.calendar td {
+  font-size: 12px;
+  padding: 4px 0;
+  border-bottom: 1px solid var(--divider);
+}
+
+.calendar .title {
+  color: var(--white);
+  font-weight: 600;
+}
+
+.calendar .time {
+  color: var(--accent) !important;
+  font-size: 11px;
+}
+
+.calendar .today {
+  color: var(--white) !important;
+}
+
+/* ── Claude Briefing ── */
+.MMM-ClaudeBriefing .briefing-text {
+  font-size: 14px;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.85);
+  border-left: 2px solid var(--accent);
+  padding-left: 12px;
+}
+
+/* ── System Info ── */
+.MMM-SysInfo {
+  font-size: 11px;
+}
+
+.MMM-SysInfo .sysinfo-row {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 6px;
+}
+
+.sysinfo-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.sysinfo-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.sysinfo-value {
+  font-size: 1.2em;
+  font-weight: 600;
+  color: var(--white);
+  padding-top: 6px;
+}
+
+/* ── Gmail ── */
+.MMM-Gmail .email-item {
+  font-size: 11px;
+  padding: 5px 0;
+  border-bottom: 1px solid var(--divider);
+}
+
+.MMM-Gmail .email-sender {
+  font-weight: 600;
+  color: var(--white);
+}
+
+.MMM-Gmail .email-subject {
+  color: var(--muted);
+  font-size: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 300px;
+}
+
+/* ── EV Modules (Powerwall, Rivian) ── */
+.MMM-Powerwall .label,
+.MMM-Rivian .label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.MMM-Powerwall .value,
+.MMM-Rivian .value {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--white);
+}
+
+.battery-bar-container {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 2px;
+  height: 6px;
+  overflow: hidden;
+  margin-top: 4px;
+}
+
+.battery-bar-fill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 0.5s ease;
+}
+
+.battery-bar-fill.high   { background: var(--white); }
+.battery-bar-fill.medium { background: var(--accent); }
+.battery-bar-fill.low    { background: rgba(255, 255, 255, 0.3); }
+
+/* ── Bottom regions — fill full column width ── */
+.region.bottom.left .module,
+.region.bottom.right .module,
+.region.bottom.center .module {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Car modules: side-by-side at 50% each, centered content */
+.module.MMM-LucidCar,
+.module.MMM-RivianCar {
+  text-align: center;
+  width: 50% !important;
+  box-sizing: border-box;
+}
+
+/* Same image height for both car modules */
+.lucid-car-img,
+.rivian-car-img {
+  width: auto !important;
+  height: 110px !important;
+  max-width: 100%;
+}
+
+/* Tesla Energy: full width */
+.module.MMM-TeslaEnergy {
+  width: 100%;
+}
+
+.module.MMM-TeslaEnergy .tesla-subtitle {
+  color: var(--blue);
+}
+
+.tesla-grid {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 8px;
+}
+
+.tesla-cell {
+  flex: 1;
+  min-width: 60px;
+}
+
+/* ── UniFi Network + Protect — tighter subheaders, white bandwidth numbers ── */
+.un-section-heading,
+.up-section-heading {
+  padding: 2px 8px !important;
+  margin-bottom: 5px !important;
+}
+
+.un-bw-label {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Leviton + Sense panels: full width */
+.module.MMM-LevitonPanel,
+.module.MMM-SenseEnergy {
+  width: 100%;
+}
+
+/* ── PIR — hidden, runs in background ── */
+.MMM-Universal-Pir,
+.MMM-PIR-Sensor {
+  display: none;
+}
+
+/* ── Calendar data source — hidden, feeds CalendarExt3Agenda ── */
+.calendar {
+  display: none;
+}
+
+/* ── AQI — color coded by EPA index level ── */
+.MMM-AQI .aqi-value {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 32px;
+  text-align: center;
+}
+
+.MMM-AQI .aqi-good        { color: #43B047; }
+.MMM-AQI .aqi-moderate    { color: #FBD000; }
+.MMM-AQI .aqi-sensitive   { color: #FF8C00; }
+.MMM-AQI .aqi-unhealthy   { color: #E52521; }
+.MMM-AQI .aqi-very        { color: #8B0000; }
+.MMM-AQI .aqi-hazardous   { color: #7E0023; }
+
+.MMM-AQI .iaqi-row {
+  font-family: 'Outfit', sans-serif;
+  font-size: 11px;
+  display: flex;
+  justify-content: space-between;
+  padding: 3px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  color: rgba(255,255,255,0.7);
+}
+
+.MMM-AQI .iaqi-row .pollutant {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 7px;
+  color: rgba(255,255,255,0.4);
+  text-transform: uppercase;
+}
+
+/* Wildfire alert — fires when PM2.5 > 55 */
+.MMM-AQI.wildfire-alert {
+  border: 2px solid #FF8C00;
+  background: rgba(255, 140, 0, 0.08);
+  animation: pulseAlert 2s ease-in-out infinite;
+}
+
+@keyframes pulseAlert {
+  0%, 100% { border-color: #FF8C00; }
+  50%       { border-color: transparent; }
+}
+
+/* ── Commute Module ── */
+.MMM-MyCommute .commute-item {
+  font-family: 'Outfit', sans-serif;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.MMM-MyCommute .destination-label {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 7px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 1px;
+}
+
+.MMM-MyCommute .travel-time {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.MMM-MyCommute .status-good     { color: #43B047; }
+.MMM-MyCommute .status-moderate { color: #FBD000; }
+.MMM-MyCommute .status-poor     { color: #E52521; }
+
+.MMM-MyCommute.hidden {
+  display: none;
+}
+
+/* ── Module fade-in ── */
+.module {
+  animation: fadeUp 0.5s ease forwards;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
